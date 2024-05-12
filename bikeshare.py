@@ -12,12 +12,13 @@ day_list = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 
 
 def get_filters():
     """
-    Asks user to specify a city, month, and day to analyze.
+    Prompts the user for a city, month, and day to filter bikeshare data.
 
     Returns:
-        (str) city - name of the city to analyze
-        (str) month - name of the month to filter by, or "all" to apply no month filter
-        (str) day - name of the day of week to filter by, or "all" to apply no day filter
+        tuple: A tuple containing the following string values:
+            * city (str): The name of the selected city.
+            * month (str): The name of the selected month, or "all" for no filter.
+            * day (str): The name of the selected day of the week, or "all" for no filter.
     """
     print('Hello! Let\'s explore some US bikeshare data!')
     # get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
@@ -50,14 +51,15 @@ def get_filters():
 
 def load_data(city, month, day):
     """
-    Loads data for the specified city and filters by month and day if applicable.
+    Loads bikeshare data for the specified city and filters by month and day.
 
     Args:
-        (str) city - name of the city to analyze
-        (str) month - name of the month to filter by, or "all" to apply no month filter
-        (str) day - name of the day of week to filter by, or "all" to apply no day filter
+        city (str): The name of the city to analyze.
+        month (str): The name of the month to filter by, or "all" for no filter.
+        day (str): The name of the day of the week to filter by, or "all" for no filter.
+
     Returns:
-        df - Pandas DataFrame containing city data filtered by month and day
+        pandas.DataFrame: A DataFrame containing the filtered bikeshare data.
     """
     # load data file into a dataframe
     df = pd.read_csv(CITY_DATA[city])
@@ -76,7 +78,12 @@ def load_data(city, month, day):
 
 
 def time_stats(df):
-    """Displays statistics on the most frequent times of travel."""
+    """
+    Calculates and prints statistics related to the most frequent times of travel.
+
+    Args:
+        df (pandas.DataFrame): The DataFrame containing the bikeshare data.
+    """
 
     print('\nCalculating The Most Frequent Times of Travel...\n')
     start_time = time.time()
@@ -99,7 +106,12 @@ def time_stats(df):
 
 
 def station_stats(df):
-    """Displays statistics on the most popular stations and trip."""
+    """
+    Calculates and prints statistics related to the most popular stations and trip.
+
+    Args:
+        df (pandas.DataFrame): The DataFrame containing the bikeshare data.
+    """
 
     print('\nCalculating The Most Popular Stations and Trip...\n')
     start_time = time.time()
@@ -123,7 +135,12 @@ def station_stats(df):
 
 
 def trip_duration_stats(df):
-    """Displays statistics on the total and average trip duration."""
+    """
+    Calculates and prints statistics related to the total and average trip duration.
+
+    Args:
+        df (pandas.DataFrame): The DataFrame containing the bikeshare data.
+    """
 
     print('\nCalculating Trip Duration...\n')
     start_time = time.time()
@@ -141,7 +158,12 @@ def trip_duration_stats(df):
 
 
 def user_stats(df):
-    """Displays statistics on bikeshare users."""
+    """
+    Calculates and prints statistics related to bikeshare users.
+
+    Args:
+        df (pandas.DataFrame): The DataFrame containing the bikeshare data.
+    """
 
     print('\nCalculating User Stats...\n')
     start_time = time.time()
@@ -174,6 +196,13 @@ def user_stats(df):
     print('-'*40)
 
 def display_data(df, start_loc=0):
+    """
+    Displays 5 rows of data and prompts the user if they want to see more.
+
+    Args:
+        df (pandas.DataFrame): The DataFrame containing the bikeshare data.
+        start_loc (int, optional): The starting row to display. Defaults to 0.
+    """
     end_loc = start_loc + 5
     show_more = input("Do you want to see the next 5 rows of data? (yes/no): ")
 
