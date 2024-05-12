@@ -10,6 +10,24 @@ city_list = ['chicago', 'new york city', 'washington']
 month_list = ['january', 'february', 'march', 'april', 'may', 'june', 'all']
 day_list = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday', 'all']
 
+def get_valid_input(prompt, valid_options):
+    """
+    Prompts the user for input and ensures it's within a list of valid options.
+
+    Args:
+        prompt (str): The message displayed to the user to request input.
+        valid_options (list): A list of valid input options.
+
+    Returns:
+        str: The user's valid input in lowercase.
+    """
+    while True:
+            user_input = input(prompt).lower()
+            if user_input in valid_options:
+                return user_input
+            else:
+                print(f"Invalid input. Please choose from: {', '.join(valid_options)}")
+
 def get_filters():
     """
     Prompts the user for a city, month, and day to filter bikeshare data.
@@ -23,7 +41,7 @@ def get_filters():
     print('Hello! Let\'s explore some US bikeshare data!')
     # get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
     while True:
-        city = input('Please enter the city name: ').lower()
+        city = get_valid_input('Please enter the city name: ', city_list)
         if city in city_list:
             break
         else:
@@ -31,7 +49,7 @@ def get_filters():
 
     # get user input for month (all, january, february, ... , june)
     while True:
-        month = input('Please enter the month name: ').lower()
+        month = get_valid_input('Please enter the month name: ', month_list)
         if month in month_list:
             break
         else:
@@ -39,7 +57,7 @@ def get_filters():
 
     # get user input for day of week (all, monday, tuesday, ... sunday)
     while True:
-        day = input('Please enter the day name: ').lower()
+        day = get_valid_input('Please enter the day name: ', day_list)
         if day in day_list:
             break
         else:
